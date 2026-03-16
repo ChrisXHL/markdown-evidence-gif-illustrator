@@ -43,7 +43,8 @@
 │   ├── capture_hd_screenshot.py
 │   ├── capture_hd_screenshot.js
 │   ├── render_webreel_config.py
-│   └── insert_gifs_into_markdown.py
+│   ├── insert_gifs_into_markdown.py
+│   └── redact_asset_filenames.py
 └── assets/
     ├── images/
     └── gif/
@@ -106,6 +107,18 @@ python3 $HOME/.agents/skills/markdown-evidence-gif-illustrator/scripts/insert_gi
   ./article.annotated.md ./matches.yaml
 ```
 
+### 6) （可选）一键匿名化图片/GIF 文件名
+
+当你要分享 package 给外部协作者，建议执行：
+
+```bash
+python3 $HOME/.agents/skills/markdown-evidence-gif-illustrator/scripts/redact_asset_filenames.py \
+  ./<article>__illustration_package
+```
+
+该命令会把 `assets/images` 和 `assets/gif` 下文件重命名为 `img-001-<hash>.png` / `gif-001-<hash>.gif` 形式，
+并自动回写 `matches.yaml`、`sources.md`、`*.annotated.md` 中的引用路径。
+
 ---
 
 ## 推荐工作流（简版）
@@ -136,6 +149,7 @@ python3 $HOME/.agents/skills/markdown-evidence-gif-illustrator/scripts/insert_gi
 - 避免提交任何 API Key / Token / Cookie
 - 文档示例路径请使用 `$HOME/...`，不要硬编码本机用户名路径
 - `assets/` 建议仅存放可公开图片/GIF，不要放私密截图
+- 对外分享前可运行 `scripts/redact_asset_filenames.py` 去标识化文件名并同步更新引用
 
 ---
 
