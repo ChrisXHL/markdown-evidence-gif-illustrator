@@ -59,6 +59,13 @@
 python3 $HOME/.agents/skills/markdown-evidence-gif-illustrator/scripts/create_article_package.py <article.md>
 ```
 
+> 默认会脱敏本地绝对路径（如 `/Users/<name>/...`），避免路径泄露到 `illustration-plan.md` 或终端日志。  
+> 如你确实需要原始绝对路径，可显式关闭：
+>
+> ```bash
+> python3 .../create_article_package.py <article.md> --no-redact-paths
+> ```
+
 将生成：
 
 ```text
